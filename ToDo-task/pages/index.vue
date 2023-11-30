@@ -1,18 +1,18 @@
 <template>
   <v-layout row justify-center>
     <v-btn class="mx-auto" height="50px" @click.native.stop="dialog = true">
-      Add a ToDo
+      Add To Do
     </v-btn>
-    <v-dialog v-model="dialog" max-width="290">
+    <v-dialog v-model="addTodoDialog" max-width="290">
       <v-card>
-        <v-card-title>Add a ToDo Task</v-card-title>
+        <v-card-title>Add a To Do Task</v-card-title>
         <v-text-field v-model="todoTitle" label="Type here"></v-text-field>
         <v-text-field
           class="label-set"
           height="50px"
-          v-model="todoCheckbox"
+          v-model="todoCompleted"
           type="checkbox"
-          label="mark as completed"
+          label="Mark as completed"
         ></v-text-field>
 
         <v-card-actions>
@@ -34,15 +34,14 @@
 </template>
 
 <script>
-import ToDo from "../components/ToDo.vue";
+
 export default {
-  components: { ToDo },
   data() {
     return {
-      dialog: false,
+      addTodoDialog: false,
       todos: [
-        { id: 1, name: "aa", todoCheckbox: false },
-        { id: 2, name: "bb", todoCheckbox: false },
+        { id: 1, name: "aa", todoCompleted: false },
+        { id: 2, name: "bb", todoCompleted: false },
       ],
       todoTitle: null,
       toDotoEdit: false,
@@ -56,7 +55,7 @@ export default {
         this.todos.push({
           id: this.todos.length + 1,
           name: this.todoTitle,
-          todoCheckbox:false
+          todoCompleted: false
         });
         this.openPopUp();
         this.resetAddview();
@@ -75,8 +74,8 @@ export default {
     },
     resetAddview() {
       this.todoTitle = "";
-      this.todoCheckbox=false;
-      this.dialog = false;
+      this.todoCompleted = false;
+      this.addTodoDialog = false;
     },
 
     deleteTodo(todoId) {
@@ -87,7 +86,7 @@ export default {
 
     handleEdit(toDo) {
       this.todoTitle = toDo.name;
-      this.dialog = true;
+      this.addTodoDialog = true;
       this.toDotoEdit = toDo;
     },
 

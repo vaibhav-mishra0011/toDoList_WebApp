@@ -1,0 +1,17 @@
+<template>
+  <div>
+    <nuxt />
+  </div>
+</template>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+</style>
